@@ -4,6 +4,8 @@ const minuteSpan = document.querySelector('#minutes') as HTMLSpanElement;
 const secondSpan = document.querySelector('#seconds') as HTMLSpanElement;
 const ampm = document.querySelector('#ampm') as HTMLSpanElement;
 
+const swapClockTimeFormatButton = document.querySelector('#swap-mode-button') as HTMLButtonElement;
+
 
 function updateClock() {
     const now = new Date();
@@ -22,7 +24,6 @@ function updateClock() {
 }
 
 
-const swapClockTimeFormatButton = document.querySelector('#swap-mode-button') as HTMLButtonElement;
 swapClockTimeFormatButton.addEventListener('click', () => {
     const is24Hour = hour24Span.style.display !== 'none';
     hour24Span.style.display = is24Hour ? 'none' : 'inline-block';

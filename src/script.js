@@ -4,6 +4,7 @@ const hour12Span = document.querySelector('#hours12');
 const minuteSpan = document.querySelector('#minutes');
 const secondSpan = document.querySelector('#seconds');
 const ampm = document.querySelector('#ampm');
+const swapClockTimeFormatButton = document.querySelector('#swap-mode-button');
 function updateClock() {
     const now = new Date();
     console.log(now);
@@ -17,7 +18,6 @@ function updateClock() {
     ampm.textContent = hours >= '12' ? 'PM' : 'AM';
     requestAnimationFrame(updateClock);
 }
-const swapClockTimeFormatButton = document.querySelector('#swap-mode-button');
 swapClockTimeFormatButton.addEventListener('click', () => {
     const is24Hour = hour24Span.style.display !== 'none';
     hour24Span.style.display = is24Hour ? 'none' : 'inline-block';
