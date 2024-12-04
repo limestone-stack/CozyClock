@@ -6,6 +6,9 @@ const ampm = document.querySelector('#ampm') as HTMLSpanElement;
 
 const swapClockTimeFormatButton = document.querySelector('#swap-mode-button') as HTMLButtonElement;
 
+let inactivityTimer: ReturnType<typeof setTimeout>;
+const hideAbles = document.querySelectorAll('.hideable') as NodeListOf<HTMLElement>;
+
 
 function updateClock() {
     const now = new Date();
@@ -23,6 +26,23 @@ function updateClock() {
     requestAnimationFrame(updateClock);
 }
 
+function hideButtons() {
+    for (const hideable of Array.from(hideAbles)) {
+        hideable.classList.add('hidden');
+    }
+}
+
+function resetTimer() {
+    clearTimeout(inactivityTimer);
+    inactivityTimer = setTimeout(hideButtons, 5000);
+    for (const hideable of Array.from(hideAbles)) {
+        hideable.classList.remove('hidden');
+    }
+}
+
+document.addEventListener('mousemove', resetTimer);
+document.addEventListener('click', resetTimer);
+document.addEventListener('keypress', resetTimer);
 
 swapClockTimeFormatButton.addEventListener('click', () => {
     const is24Hour = hour24Span.style.display !== 'none';
@@ -31,4 +51,5 @@ swapClockTimeFormatButton.addEventListener('click', () => {
     ampm.style.display = is24Hour ? 'inline-block' : 'none';
 });
 
+resetTimer();
 updateClock();

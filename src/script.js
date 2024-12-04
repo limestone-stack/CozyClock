@@ -5,6 +5,8 @@ const minuteSpan = document.querySelector('#minutes');
 const secondSpan = document.querySelector('#seconds');
 const ampm = document.querySelector('#ampm');
 const swapClockTimeFormatButton = document.querySelector('#swap-mode-button');
+let inactivityTimer;
+const hideAbles = document.querySelectorAll('.hideable');
 function updateClock() {
     const now = new Date();
     console.log(now);
@@ -18,10 +20,26 @@ function updateClock() {
     ampm.textContent = hours >= '12' ? 'PM' : 'AM';
     requestAnimationFrame(updateClock);
 }
+function hideButtons() {
+    for (const hideable of Array.from(hideAbles)) {
+        hideable.classList.add('hidden');
+    }
+}
+function resetTimer() {
+    clearTimeout(inactivityTimer);
+    inactivityTimer = setTimeout(hideButtons, 5000);
+    for (const hideable of Array.from(hideAbles)) {
+        hideable.classList.remove('hidden');
+    }
+}
+document.addEventListener('mousemove', resetTimer);
+document.addEventListener('click', resetTimer);
+document.addEventListener('keypress', resetTimer);
 swapClockTimeFormatButton.addEventListener('click', () => {
     const is24Hour = hour24Span.style.display !== 'none';
     hour24Span.style.display = is24Hour ? 'none' : 'inline-block';
     hour12Span.style.display = is24Hour ? 'inline-block' : 'none';
     ampm.style.display = is24Hour ? 'inline-block' : 'none';
 });
+resetTimer();
 updateClock();

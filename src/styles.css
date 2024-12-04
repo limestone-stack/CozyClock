@@ -25,6 +25,16 @@ body {
     display: inline-block;
 }
 
+.hideable {
+    transition: visibility 2s, opacity 2s linear;
+    opacity: 1;
+}
+
+.hideable.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
 #hours12 {
     display: none;
 }
