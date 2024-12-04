@@ -26,7 +26,7 @@ body {
 }
 
 .hideable {
-    transition: visibility 2s, opacity 2s linear;
+    transition: visibility 1s, opacity 1s linear;
     opacity: 1;
 }
 
@@ -43,11 +43,11 @@ body {
     display: none;
 }
 
-#swap-mode-button {
+.format-button {
     font-family: inherit;
     display: block;
     padding: 5px 10px;
-    margin: 0 auto;
+    margin: 10px auto;
     text-align: center;
     background-color: #cfcfcf;
     border: none;

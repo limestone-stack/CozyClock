@@ -5,6 +5,7 @@ const secondSpan = document.querySelector('#seconds') as HTMLSpanElement;
 const ampm = document.querySelector('#ampm') as HTMLSpanElement;
 
 const swapClockTimeFormatButton = document.querySelector('#swap-mode-button') as HTMLButtonElement;
+const toggleFullscreenButton = document.querySelector('#toggle-fullscreen-button') as HTMLButtonElement;
 
 let inactivityTimer: ReturnType<typeof setTimeout>;
 const hideAbles = document.querySelectorAll('.hideable') as NodeListOf<HTMLElement>;
@@ -34,7 +35,7 @@ function hideButtons() {
 
 function resetTimer() {
     clearTimeout(inactivityTimer);
-    inactivityTimer = setTimeout(hideButtons, 5000);
+    inactivityTimer = setTimeout(hideButtons, 2000);
     for (const hideable of Array.from(hideAbles)) {
         hideable.classList.remove('hidden');
     }
@@ -49,6 +50,14 @@ swapClockTimeFormatButton.addEventListener('click', () => {
     hour24Span.style.display = is24Hour ? 'none' : 'inline-block';
     hour12Span.style.display = is24Hour ? 'inline-block' : 'none';
     ampm.style.display = is24Hour ? 'inline-block' : 'none';
+});
+
+toggleFullscreenButton.addEventListener('click', () => {
+    if (document.fullscreenElement) {
+        document.exitFullscreen();
+    } else {
+        document.documentElement.requestFullscreen();
+    }
 });
 
 resetTimer();
