@@ -11,6 +11,11 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+
+    background-image: url("./cozyclockwallpaper.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .clock-container {
@@ -49,7 +54,7 @@ body {
     padding: 5px 10px;
     margin: 10px auto;
     text-align: center;
-    background-color: #cfcfcf;
+    background-color: #ffffff;
     border: none;
     border-radius: 15px;
     cursor: pointer;
