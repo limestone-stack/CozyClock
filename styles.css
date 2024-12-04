@@ -27,6 +27,12 @@ body {
 }
 
 .time-number {
+    color: #f0f0f0;
+    display: inline-block;
+}
+
+.separator {
+    color: #f0f0f0;
     display: inline-block;
 }
 
