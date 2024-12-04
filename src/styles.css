@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Space Mono", monospace;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.clock-container {
+    font-size: 6rem;
+    display: block;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+}
+
+.time-number {
+    display: inline-block;
+}
+
+#hours12 {
+    display: none;
+}
+
+#ampm {
+    display: none;
+}
+
+#swap-mode-button {
+    font-family: inherit;
+    display: block;
+    padding: 5px 10px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #cfcfcf;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.button-text {
+    font-size: 1.5rem;
+}
